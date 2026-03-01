@@ -41,8 +41,17 @@ export default function ProductCard({ product, className = '' }: ProductCardProp
           <span
             className="absolute top-3 left-3 text-[9px] tracking-widest uppercase px-2.5 py-1 font-medium z-10"
             style={{
-              backgroundColor: product.badge === 'sale' ? 'var(--gold)' : product.badge === 'new' ? 'var(--charcoal)' : 'var(--blush)',
-              color: product.badge === 'blush' ? 'var(--charcoal)' : 'var(--ivory)',
+              backgroundColor:
+                  product.badge === 'sale'
+                    ? 'var(--gold)'
+                    : product.badge === 'new'
+                    ? 'var(--charcoal)'
+                    : product.badge === 'bestseller'
+                    ? 'var(--blush)'
+                    : 'var(--blush)',
+              color: product.badge === 'bestseller'
+                ? 'var(--charcoal)'
+                : 'var(--ivory)',
             }}
           >
             {product.badge === 'new' ? t('newArrival') : product.badge === 'bestseller' ? t('bestseller') : `-${discount}%`}
@@ -86,9 +95,18 @@ export default function ProductCard({ product, className = '' }: ProductCardProp
           aria-label={liked ? t('removeFromFavorites') : t('addToFavorites')}
           className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full transition-all duration-200 z-10 opacity-0 group-hover:opacity-100"
           style={{
-            backgroundColor: liked ? 'var(--gold)' : 'rgba(248,244,239,0.9)',
+            backgroundColor:
+                  product.badge === 'sale'
+                    ? 'var(--gold)'
+                    : product.badge === 'new'
+                    ? 'var(--charcoal)'
+                    : product.badge === 'bestseller'
+                    ? 'var(--blush)'
+                    : 'var(--blush)',
             border: '1px solid var(--border)',
-            color: liked ? 'var(--ivory)' : 'var(--charcoal)',
+            color: product.badge === 'bestseller'
+              ? 'var(--charcoal)'
+              : 'var(--ivory)',
           }}
         >
           <Heart size={13} fill={liked ? 'currentColor' : 'none'} />
